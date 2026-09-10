@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Automatisation & workflow{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Automatisation et création de workflow efficaces</h1>
+        <p>Nous aidons les entreprises à automatiser leurs tâches répétitives et à structurer leurs processus pour gagner du temps et réduire les erreurs.</p>
+        <a class="btn" href="{% url 'contact' %}">Automatiser mes processus</a>
+    </div>
+    <div class="card">
+        <img class="hero-image" src="{% static 'services/img/project-example.jpg' %}" alt="Illustration automatisation workflow">
+        <h2>Exemples d’automatisation</h2>
+        <ul>
+            <li>Réponses automatiques</li>
+            <li>Gestion de leads</li>
+            <li>Notifications et relances</li>
+            <li>Workflow de production</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

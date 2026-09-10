@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}KREALAB{% endblock %}</title>
+    <style>
+        :root { --bg: #07121f; --card: #0f1728; --accent: #4f8cff; --accent2: #17c3b2; --text: #f5f7fb; --muted: #a2b0c2; --border: #20324b; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #07121f 0%, #0b1222 100%); color: var(--text); transition: background 0.25s ease, color 0.25s ease; }
+        body.light { --bg: #f7f9fc; --card: #ffffff; --accent: #0f4c81; --accent2: #2d7ff3; --text: #122033; --muted: #5f6f84; --border: #e7ecf2; }
+        body.light .card, body.light .item { box-shadow: 0 12px 30px rgba(15, 76, 129, 0.08); }
+        body.light .item { background: #ffffff; }
+        body.light header { background: rgba(255,255,255,0.96); }
+        body.light footer { background: rgba(255,255,255,0.96); }
+        header { padding: 22px 8%; background: rgba(7, 18, 31, 0.95); position: sticky; top: 0; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 12px; font-size: 1.05rem; font-weight: 700; color: var(--accent); }
+        .brand img { width: 46px; height: 46px; object-fit: cover; border-radius: 12px; animation: float 3s ease-in-out infinite; }
+        nav a { color: var(--text); text-decoration: none; margin-left: 16px; font-weight: 600; transition: color 0.2s ease; }
+        nav a:hover { color: var(--accent); }
+        .theme-toggle { margin-left: 16px; border: none; background: var(--accent); color: white; padding: 8px 12px; border-radius: 999px; cursor: pointer; font-weight: 700; transition: transform 0.2s ease; }
+        .theme-toggle:hover { transform: scale(1.05); }
+        body.dark { --bg: #07121f; --card: #0f1728; --accent: #4f8cff; --accent2: #17c3b2; --text: #f5f7fb; --muted: #a2b0c2; --border: #20324b; }
+        body.dark .card, body.dark .item { box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+        body.dark .item { background: #111c2d; }
+        body.dark header { background: rgba(7, 18, 31, 0.95); }
+        body.dark footer { background: rgba(7, 18, 31, 0.95); }
+        main { padding: 40px 8% 50px; }
+        .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center; margin-bottom: 30px; }
+        .hero h1 { font-size: 2.3rem; margin-bottom: 12px; color: #0b1d33; }
+        .hero p { color: var(--muted); line-height: 1.7; }
+        .btn { display: inline-block; margin-top: 18px; padding: 12px 18px; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: white; text-decoration: none; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); }
+        .hero-image { width: 100%; border-radius: 18px; margin-bottom: 14px; border: 1px solid var(--border); object-fit: cover; max-height: 320px; }
+        .showcase { padding: 18px; }
+        .showcase-caption { margin-top: 8px; }
+        .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.24em; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .item { background: #111c2d; padding: 20px; border-radius: 16px; border: 1px solid var(--border); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .item:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24); }
+        .item h3 { margin-top: 0; color: var(--accent); }
+        .section { margin-top: 24px; }
+        footer { padding: 24px 8% 40px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 20px; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        @media (max-width: 700px){ .hero{grid-template-columns: 1fr;} header{padding: 18px 6%;} main{padding: 24px 6% 40px;} nav{flex-direction: column; gap: 10px;} }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="brand">
+                <img src="{% static 'services/img/logo-krealab.jpg' %}" alt="Logo KREALAB">
+                <strong>KREALAB</strong>
+            </div>
+            <div>
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="{% url 'site_web' %}">Sites web</a>
+                <a href="{% url 'community' %}">Community</a>
+                <a href="{% url 'motion' %}">Motion</a>
+                <a href="{% url 'contenu' %}">Contenu</a>
+                <a href="{% url 'publicite' %}">Publicité</a>
+                <a href="{% url 'automation' %}">Automatisation</a>
+                <button class="theme-toggle" type="button" aria-label="Changer le thème">🌙</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        © 2026 KREALAB — SaaS de services informatiques et marketing digital.
+    </footer>
+
+    <script>
+        (function () {
+            const key = 'krealab-theme';
+            const button = document.querySelector('.theme-toggle');
+
+            function applyTheme(theme) {
+                document.body.classList.remove('dark', 'light');
+                document.body.classList.add(theme);
+                if (button) {
+                    button.textContent = theme === 'dark' ? '☀️' : '🌙';
+                    button.setAttribute('aria-label', theme === 'dark' ? 'Passer au thème clair' : 'Passer au thème sombre');
+                }
+                localStorage.setItem(key, theme);
+            }
+
+            const saved = localStorage.getItem(key);
+            const initialTheme = saved === 'light' ? 'light' : 'dark';
+            applyTheme(initialTheme);
+
+            if (button) {
+                button.addEventListener('click', function () {
+                    const nextTheme = document.body.classList.contains('light') ? 'dark' : 'light';
+                    applyTheme(nextTheme);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

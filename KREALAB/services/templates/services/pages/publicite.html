@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Publicité en ligne{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Publicité en ligne pour générer des leads et des ventes</h1>
+        <p>Nous mettons en place des campagnes publicitaires ciblées, suivies et optimisées pour atteindre les bons prospects au bon moment.</p>
+        <a class="btn" href="{% url 'contact' %}">Lancer une campagne</a>
+    </div>
+    <div class="card">
+        <img class="hero-image" src="{% static 'services/img/project-example.jpg' %}" alt="Illustration publicité en ligne">
+        <h2>Notre méthode</h2>
+        <ul>
+            <li>Ciblage précis</li>
+            <li>Création de visuels</li>
+            <li>Suivi des performances</li>
+            <li>Optimisation continue</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

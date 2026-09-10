@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KREALAB | SaaS de services digitaux</title>
+    <style>
+        :root { --bg: #07111f; --card: #0f1d33; --accent: #4f8cff; --accent2: #17c3b2; --text: #f4f7fb; --muted: #9fb0c9; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(135deg, var(--bg), #13263f); color: var(--text); }
+        header { padding: 24px 8%; background: rgba(7,17,31,0.85); position: sticky; top: 0; backdrop-filter: blur(10px); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: var(--text); text-decoration: none; margin-left: 16px; font-weight: 600; }
+        .hero { padding: 80px 8% 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; align-items: center; }
+        .hero h1 { font-size: 2.6rem; margin-bottom: 12px; }
+        .hero p { color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+        .hero img { width: 100%; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { width: 46px; height: 46px; object-fit: cover; border-radius: 12px; }
+        .btn { display: inline-block; margin-top: 18px; padding: 12px 18px; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); color: white; text-decoration: none; font-weight: 700; }
+        .card { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+        .services { padding: 40px 8% 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .service { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 14px; }
+        .service h3 { margin-top: 0; }
+        .section { padding: 20px 8% 50px; }
+        form { display: grid; gap: 10px; }
+        input, textarea, select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #27415f; background: #0b1728; color: var(--text); }
+        footer { padding: 24px 8% 40px; color: var(--muted); }
+        @media (max-width: 700px){ .hero{grid-template-columns: 1fr;} header{padding: 18px 6%;} .hero{padding: 60px 6% 40px;} .services, .section{padding-left: 6%; padding-right: 6%;} }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="brand">
+                <img src="{% static 'services/img/logo-krealab.jpg' %}" alt="Logo KREALAB">
+                <strong>KREALAB</strong>
+            </div>
+            <div>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div>
+                <h1>Votre SaaS de services numériques à forte valeur ajoutée</h1>
+                <p>Nous accompagnons les marques, startups et entreprises dans la création de sites web, la gestion de réseaux sociaux, le motion design, la rédaction de contenu, la publicité en ligne et l’automatisation de leurs workflows.</p>
+                <a class="btn" href="#contact">Demander un devis</a>
+            </div>
+            <div class="card">
+                <img src="{% static 'services/img/project-example.jpg' %}" alt="Exemple de projet KREALAB">
+                <h2>Pourquoi choisir KREALAB ?</h2>
+                <ul>
+                    <li>Solutions digitales sur mesure</li>
+                    <li>Stratégie de communication claire et efficace</li>
+                    <li>Automatisation et gain de temps</li>
+                    <li>Résultats orientés croissance</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="service">
+                <h3>Création de site web</h3>
+                <p>Landing pages, sites vitrines, boutiques et portails modernes.</p>
+            </div>
+            <div class="service">
+                <h3>Community management</h3>
+                <p>Gestion de contenu et animation de vos réseaux sociaux.</p>
+            </div>
+            <div class="service">
+                <h3>Motion design</h3>
+                <p>Animations courtes, reels et visuels engageants pour vos campagnes.</p>
+            </div>
+            <div class="service">
+                <h3>Rédaction & copywriting</h3>
+                <p>Messages impactants, fiches produits et contenus de marque.</p>
+            </div>
+            <div class="service">
+                <h3>Publicité en ligne</h3>
+                <p>Campagnes ciblées pour générer des leads et augmenter vos ventes.</p>
+            </div>
+            <div class="service">
+                <h3>Automatisation & workflow</h3>
+                <p>Processus intelligents pour optimiser votre productivité.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="card">
+                <h2>Prêt à lancer votre projet ?</h2>
+                <p>Décrivez votre besoin et nous vous répondrons rapidement.</p>
+                {% if submitted %}
+                    <p style="color:#17c3b2; font-weight:700;">Votre demande a bien été enregistrée. Nous vous contacterons bientôt.</p>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Votre nom" required>
+                    <input type="email" name="email" placeholder="Votre email" required>
+                    <select name="service" required>
+                        <option value="">Sélectionnez un service</option>
+                        <option>Création de site web</option>
+                        <option>Community management</option>
+                        <option>Motion design</option>
+                        <option>Rédaction de contenu</option>
+                        <option>Publicité en ligne</option>
+                        <option>Automatisation & workflow</option>
+                    </select>
+                    <textarea name="message" rows="5" placeholder="Décrivez votre projet" required></textarea>
+                    <button class="btn" type="submit">Envoyer ma demande</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 KREALAB — SaaS de services informatiques et marketing digital.
+    </footer>
+</body>
+</html>

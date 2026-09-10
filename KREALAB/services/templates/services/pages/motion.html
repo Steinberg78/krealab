@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Motion design{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Motion design pour capter l’attention rapidement</h1>
+        <p>Nous produisons des animations courtes et visuelles adaptées aux réseaux sociaux, aux campagnes marketing et à la communication digitale.</p>
+        <a class="btn" href="{% url 'contact' %}">Demander une animation</a>
+    </div>
+    <div class="card">
+        <img class="hero-image" src="{% static 'services/img/project-example.jpg' %}" alt="Illustration motion design">
+        <h2>Nos formats</h2>
+        <ul>
+            <li>Reels et shorts</li>
+            <li>Animations publicitaires</li>
+            <li>Visuels dynamiques</li>
+            <li>Contenus engageants</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

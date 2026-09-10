@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Création de sites web{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Création de sites web modernes et performants</h1>
+        <p>Nous concevons des sites vitrines, landing pages et boutiques en ligne avec une expérience utilisateur fluide et une identité visuelle forte.</p>
+        <a class="btn" href="{% url 'contact' %}">Demander un devis</a>
+    </div>
+    <div class="card">
+        <img class="hero-image" src="{% static 'services/img/project-example.jpg' %}" alt="Illustration création de site web">
+        <h2>Ce que nous livrons</h2>
+        <ul>
+            <li>Design moderne et responsive</li>
+            <li>Optimisation UX/UI</li>
+            <li>Intégration rapide et évolutive</li>
+            <li>Site prêt à convertir</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

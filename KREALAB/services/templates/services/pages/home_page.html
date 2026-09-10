@@ -1,0 +1,52 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Services digitaux{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">AGENCE DIGITALE • SERVICES PREMIUM</p>
+        <h1>Nous transformons vos idées en expériences digitales impactantes</h1>
+        <p>Création de sites web, community management, motion design, contenus et automatisation, pour des marques qui veulent se démarquer.</p>
+        <a class="btn" href="{% url 'contact' %}">Réserver votre projet</a>
+    </div>
+    <div class="card showcase">
+        <img class="hero-image" src="{% static 'services/img/reference-site.png' %}" alt="Visuel de référence KREALAB">
+        <div class="showcase-caption">
+            <h2>Une présence digitale prête à convertir</h2>
+            <p>Design moderne, storytelling clair et stratégie orientée résultats.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Nos services phares</h2>
+    <div class="grid">
+        <div class="item">
+            <h3>Création de sites web</h3>
+            <p>Sites vitrines, landing pages et boutiques modernes, pensés pour convertir.</p>
+        </div>
+        <div class="item">
+            <h3>Community management</h3>
+            <p>Gestion de contenu, animation de communauté et visibilité durable sur les réseaux.</p>
+        </div>
+        <div class="item">
+            <h3>Motion design</h3>
+            <p>Animations courtes, reels et visuels dynamiques pour capter l’attention.</p>
+        </div>
+        <div class="item">
+            <h3>Rédaction de contenu</h3>
+            <p>Copywriting, storytelling et contenus marketing impactants.</p>
+        </div>
+        <div class="item">
+            <h3>Publicité en ligne</h3>
+            <p>Campagnes ciblées pour générer des leads qualifiés et augmenter vos ventes.</p>
+        </div>
+        <div class="item">
+            <h3>Automatisation & workflow</h3>
+            <p>Processus intelligents pour gagner du temps et fluidifier vos opérations.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

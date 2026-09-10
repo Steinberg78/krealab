@@ -1,0 +1,30 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Contact{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h1>Prêt à lancer votre projet ?</h1>
+    <p>Décrivez votre besoin et nous vous répondrons rapidement.</p>
+    {% if submitted %}
+        <p style="color:#17c3b2; font-weight:700;">Votre demande a bien été enregistrée. Nous vous contacterons bientôt.</p>
+    {% endif %}
+    <form method="post" style="display:grid; gap:10px; margin-top:16px;">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Votre nom" required>
+        <input type="email" name="email" placeholder="Votre email" required>
+        <select name="service" required>
+            <option value="">Sélectionnez un service</option>
+            <option>Création de site web</option>
+            <option>Community management</option>
+            <option>Motion design</option>
+            <option>Rédaction de contenu</option>
+            <option>Publicité en ligne</option>
+            <option>Automatisation & workflow</option>
+        </select>
+        <textarea name="message" rows="5" placeholder="Décrivez votre projet" required></textarea>
+        <button class="btn" type="submit">Envoyer ma demande</button>
+    </form>
+</section>
+{% endblock %}

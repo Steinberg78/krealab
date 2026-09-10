@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Community management{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Community management et animation de marque</h1>
+        <p>Nous gérons vos réseaux sociaux avec une stratégie de contenu cohérente, une publication régulière et des actions pensées pour renforcer votre visibilité.</p>
+        <a class="btn" href="{% url 'contact' %}">Réserver un accompagnement</a>
+    </div>
+    <div class="card">
+        <img class="hero-image" src="{% static 'services/img/project-example.jpg' %}" alt="Illustration community management">
+        <h2>Notre approche</h2>
+        <ul>
+            <li>Calendrier éditorial</li>
+            <li>Gestion de communauté</li>
+            <li>Réponses et interaction</li>
+            <li>Analyse des performances</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

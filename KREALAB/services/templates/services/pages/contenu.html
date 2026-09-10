@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block title %}KREALAB | Rédaction de contenu{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Rédaction de contenu et copywriting percutants</h1>
+        <p>Nous rédigeons des contenus clairs, engageants et adaptés à votre audience pour améliorer votre image et votre conversion.</p>
+        <a class="btn" href="{% url 'contact' %}">Demander un contenu</a>
+    </div>
+    <div class="card">
+        <img class="hero-image" src="{% static 'services/img/project-example.jpg' %}" alt="Illustration création de contenu">
+        <h2>Services de contenu</h2>
+        <ul>
+            <li>Textes marketing</li>
+            <li>Posts réseaux sociaux</li>
+            <li>Descriptions produits</li>
+            <li>Stratégie éditoriale</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
