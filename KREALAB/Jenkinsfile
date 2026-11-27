@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "krealab"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build image Docker') {
+            steps {
+                dir('KREALAB') {
+                    sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER -t $IMAGE_NAME:latest .'
+                }
+            }
+        }
+
+        stage('Verification') {
+            steps {
+                sh 'docker images $IMAGE_NAME'
+            }
+        }
+    }
+}
