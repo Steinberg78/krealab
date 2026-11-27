@@ -119,3 +119,4 @@ heroku run python manage.py migrate --fake-initial
 ---
 
 Pour plus d'aide : https://devcenter.heroku.com/articles/deploying-python
+
